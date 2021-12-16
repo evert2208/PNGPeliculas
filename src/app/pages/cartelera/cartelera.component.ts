@@ -40,6 +40,16 @@ export class CarteleraComponent implements OnInit {
 
   }
 
+  trailer(pelicula: PeliculaModel){
+    Swal.fire({
+      html: `<iframe width="420" height="315"
+      src="https://www.youtube.com/embed/${pelicula.url}" title="YouTube video player"
+      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+      gyroscope; picture-in-picture" allowfullscreen></iframe>`,
+      showConfirmButton: true
+    })
+  }
+
   clasificacion(){
 
   }

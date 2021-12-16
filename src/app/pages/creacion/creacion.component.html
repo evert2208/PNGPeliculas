@@ -57,7 +57,7 @@
 
             <label for="basic-url" class="form-label">Trailer</label>
             <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon3">URL</span>
+                <span class="input-group-text" id="basic-addon3">URL: https://youtu.be/</span>
                 <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" [(ngModel)]="pelicula.url" name="url" required>
             </div>
 
@@ -77,10 +77,12 @@
 
             <label for="basic-url" class="form-label">Poster</label>
             <div class="input-group mb-3">
-                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" [(ngModel)]="pelicula.poster" name="poster">
+                <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept=".png, .jpg, .jpeg" multiple (change)="cargarImagen($event)">
                 <button class="btn btn-outline-primary" type="button" id="inputGroupFileAddon04">Subir</button>
-            </div>
+                <br>
 
+            </div>
+            <img [src]="pelicula.poster" class="img-thumbnail mb-3" alt="poster" width="200" height="200">
             <div class="input-group mb-3">
                 <button type="submit" class="btn btn-lg btn-primary">Finalizar</button>
             </div>

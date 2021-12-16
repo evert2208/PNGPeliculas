@@ -12,3 +12,7 @@ h4 {
 button {
     margin-right: 20px !important;
 }
+
+.cursor {
+    cursor: pointer;
+}

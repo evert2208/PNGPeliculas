@@ -25,7 +25,7 @@
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
           clasificacion
         </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <ul class="dropdown-menu cursor" aria-labelledby="dropdownMenuButton1">
                 <li><a class="dropdown-item" (click)="clasificacion()">Todo publico</a></li>
                 <li><a class="dropdown-item" (click)="clasificacion()">+12Años</a></li>
                 <li><a class="dropdown-item" (click)="clasificacion()">+16Años</a></li>
@@ -34,15 +34,16 @@
     </div>
     <div class="row">
 
-        <div class="card" style="width: 18rem;" *ngFor="let movie of info; let i=index">
-            <img src="../../../assets/images/spiderman.jpg" class="card-img-top" alt="sin poster">
+        <div class="card" style="width: 18rem; margin-right: 20px; margin-bottom: 20px;" *ngFor="let movie of info; let i=index">
+            <img [src]="movie.poster" alt="sin poster" class="card-img-top" width="100" height="300">
             <div class="card-body">
                 <h5 class="card-title">{{movie.nombre | uppercase}}</h5>
-                <p class="card-text">{{movie.sinopsis}}</p>
+                <p class="card-text">{{movie.sinopsis | slice:0:100}} [...]</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">Clasificacion <span class="badge bg-warning text-dark">{{movie.clasificacion}}</span></li>
                 <li class="list-group-item">Fecha Estreno: <span class="badge bg-secondary">{{movie.dia}}-{{movie.mes}}-{{movie.ano}}</span></li>
+                <li class="list-group-item"><a (click)="trailer(movie)" class="card-link cursor">Trailer aqui</a></li>
             </ul>
             <div class="card-body">
                 <button class="btn btn-info mr-1" [routerLink]="['/creacion', movie.id]" id="btn">

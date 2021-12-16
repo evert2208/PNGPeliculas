@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { PeliculaModel } from '../../models/pelicula.model';
 import { ServiceService } from '../../services/service.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-creacion',
@@ -16,7 +17,8 @@ export class CreacionComponent implements OnInit {
   pelicula: PeliculaModel= new PeliculaModel();
 
   constructor(private peliculaService: ServiceService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private storageService: StorageService) { }
 
   ngOnInit(): void {
     const id: string | any = this.route.snapshot.paramMap.get('id');
@@ -66,4 +68,24 @@ export class CreacionComponent implements OnInit {
     });
   }
 
+  imagenes: any=[];
+  cargarImagen(event: any){
+    let archivos = event.target.files;
+    let reader= new FileReader();
+    let nombre= this.pelicula.nombre;
+
+    reader.readAsDataURL(archivos[0]);
+    reader.onloadend=()=>{
+      console.log(reader.result);
+      this.imagenes.push(reader.result);
+      this.storageService.subirImagen(nombre+"_"+Date.now(), reader.result)
+          .then(urlImage =>{
+            this.pelicula.poster=urlImage;
+            console.log(urlImage);
+          })
+    }
+
+
+
+  }
 }
