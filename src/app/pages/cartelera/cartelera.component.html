@@ -19,6 +19,19 @@
     <div class="row">
         <h2>RECIEN AÑADIDOS</h2>
     </div>
+    <div class="row" style="text-align: right;">
+        <h4>Filtrar</h4>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          clasificacion
+        </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" (click)="clasificacion()">Todo publico</a></li>
+                <li><a class="dropdown-item" (click)="clasificacion()">+12Años</a></li>
+                <li><a class="dropdown-item" (click)="clasificacion()">+16Años</a></li>
+            </ul>
+        </div>
+    </div>
     <div class="row">
 
         <div class="card" style="width: 18rem;" *ngFor="let movie of info; let i=index">
@@ -34,10 +47,10 @@
             <div class="card-body">
                 <button class="btn btn-info mr-1" [routerLink]="['/creacion', movie.id]" id="btn">
                 <i class="fa fa-pen">Editar</i>
-             </button>
+                </button>
                 <button class="btn btn-danger" (click)="borrarPelicula(movie, i )" id="btn">
                 <i class="fa fa-trash">Eliminar</i>
-             </button>
+                </button>
             </div>
         </div>
 

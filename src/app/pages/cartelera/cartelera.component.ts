@@ -40,4 +40,7 @@ export class CarteleraComponent implements OnInit {
 
   }
 
+  clasificacion(){
+
+  }
 }

@@ -1,9 +1,14 @@
 h1,
 h2,
-h5 {
+h5,
+h4 {
     font-family: 'Fjalla One', sans-serif;
 }
 
 #btn {
     font-family: 'Fjalla One', sans-serif;
+}
+
+button {
+    margin-right: 20px !important;
 }
