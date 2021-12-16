@@ -1,1 +1,61 @@
-<p>cartelera works!</p>
+<div class="container">
+    <div class="row">
+        <h1>CARTELERA</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-right">
+        <div class="container">
+            <button routerLink="/creacion/nuevo" class="btn btn-primary">
+              <i class="fa fa-plus"></i>
+          Agregar
+        </button>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="padding-top: 40px;">
+    <div class="row">
+        <h2>RECIEN AÑADIDOS</h2>
+    </div>
+    <div class="row">
+
+        <div class="card" style="width: 18rem;" *ngFor="let movie of info; let i=index">
+            <img src="../../../assets/images/spiderman.jpg" class="card-img-top" alt="sin poster">
+            <div class="card-body">
+                <h5 class="card-title">{{movie.nombre | uppercase}}</h5>
+                <p class="card-text">{{movie.sinopsis}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Clasificacion <span class="badge bg-warning text-dark">{{movie.clasificacion}}</span></li>
+                <li class="list-group-item">Fecha Estreno: <span class="badge bg-secondary">{{movie.dia}}-{{movie.mes}}-{{movie.ano}}</span></li>
+            </ul>
+            <div class="card-body">
+                <button class="btn btn-info mr-1" [routerLink]="['/creacion', movie.id]" id="btn">
+                <i class="fa fa-pen">Editar</i>
+             </button>
+                <button class="btn btn-danger" (click)="borrarPelicula(movie, i )" id="btn">
+                <i class="fa fa-trash">Eliminar</i>
+             </button>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading"> Cargando</h4>
+    <p>
+        <i class=" fa fa-sync-alt fa-spin fa-2x "></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor...
+    </p>
+</div>
+<div *ngIf="!cargando && info.length===0" class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading"> No hay registros</h4>
+    <p>
+        <i class=" fa fa-exclamation fa-2x "></i>
+    </p>
+</div>

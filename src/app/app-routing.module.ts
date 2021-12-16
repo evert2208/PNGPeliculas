@@ -5,8 +5,8 @@ import { CreacionComponent } from './pages/creacion/creacion.component';
 
 const routes: Routes = [
   {path: 'cartelera', component: CarteleraComponent},
-  {path: 'creacion', component: CreacionComponent},
-  {path: '**', redirectTo: 'cartelera'}
+  {path: 'creacion/:id', component: CreacionComponent},
+  {path: '**', pathMatch: 'full', redirectTo: 'cartelera'}
 ];
 
 @NgModule({
